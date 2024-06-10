@@ -13,13 +13,11 @@ import { ProductItem } from "modules/catalog/types";
 import { useEffect, useState } from "react";
 import { Product } from "modules/productManagement/types";
 import { AnimatedContainer } from "core/components";
-
-const PicForCarousel = (isSmall?: boolean) => {
-  const randomNum = Math.floor(Math.random() * 1000);
-  const width = isSmall ? 500 : 2000;
-  const height = isSmall ? 300 : 400;
-  return `https://picsum.photos/seed/${randomNum}/${width}/${height}`;
-};
+import PromoBufandas from "assets/images/promos/sale-bufandas.png";
+import PromoEnvios from "assets/images/promos/sales-envios.png";
+import PromoInternacional from "assets/images/promos/sales-internacional.png";
+import PromoJueves from "assets/images/promos/sales-jueves.png";
+import "./index.css";
 
 const toProductItem = (products: Product[]): ProductItem[] => {
   return products.map((product) => ({
@@ -49,23 +47,42 @@ export const CatalogPage: React.FC = () => {
 
   if (isLoading) return <LinearProgress />;
   return (
-    <AnimatedContainer maxWidth={"xl"} margin="0 auto" mt={3} px={5} boxSizing="border-box">
-      <Typography variant="h4" align="left" color="text.secondary" sx={{ mr: 1 }}>
+    <AnimatedContainer
+      maxWidth={"xl"}
+      margin="0 auto"
+      mt={3}
+      px={5}
+      boxSizing="border-box"
+    >
+      <Typography
+        variant="h4"
+        align="left"
+        color="text.secondary"
+        sx={{ mr: 1 }}
+      >
         Bienvenido a nuestra tienda de ropa
       </Typography>
-      <Typography variant="h6" align="left" color="text.secondary" sx={{ mb: 2, mr: 1 }}>
+      <Typography
+        variant="h6"
+        align="left"
+        color="text.secondary"
+        sx={{ mb: 2, mr: 1 }}
+      >
         Aquí encontrarás todo lo que necesitas
       </Typography>
       <Carousel>
-        <img src={PicForCarousel()} alt="1" width={2000} height={400} />
-        <img src={PicForCarousel()} alt="2" width={2000} height={400} />
-        <img src={PicForCarousel()} alt="3" width={2000} height={400} />
-        <img src={PicForCarousel()} alt="3" width={2000} height={400} />
-        <img src={PicForCarousel()} alt="3" width={2000} height={400} />
-        <img src={PicForCarousel()} alt="3" width={2000} height={400} />
+        <img src={PromoBufandas} alt="Promo 50% Bufandas" />
+        <img src={PromoEnvios} alt="Promo en envios nacionales" />
+        <img src={PromoInternacional} alt="Promo en envios internacionales" />
+        <img src={PromoJueves} alt="Promo de los jueves" />
       </Carousel>
 
-      <Typography variant="h5" align="left" color="text.secondary" sx={{ mb: 2, mr: 1, mt: 5 }}>
+      <Typography
+        variant="h5"
+        align="left"
+        color="text.secondary"
+        sx={{ mb: 2, mr: 1, mt: 5 }}
+      >
         Nuestros productos
       </Typography>
       <Divider />
@@ -73,7 +90,12 @@ export const CatalogPage: React.FC = () => {
         {products.map((product, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
             <Card sx={{ maxWidth: 370, margin: "0 auto" }}>
-              <CardMedia component="img" height="200" image={product.image} alt={product.name} />
+              <CardMedia
+                component="img"
+                height="200"
+                image={product.image}
+                alt={product.name}
+              />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                   {product.name}
@@ -82,7 +104,12 @@ export const CatalogPage: React.FC = () => {
                   {product.description}
                 </Typography>
               </CardContent>
-              <Typography variant="h6" align="right" color="text.secondary" sx={{ mb: 1, mr: 1 }}>
+              <Typography
+                variant="h6"
+                align="right"
+                color="text.secondary"
+                sx={{ mb: 1, mr: 1 }}
+              >
                 ${product.price}
               </Typography>
             </Card>

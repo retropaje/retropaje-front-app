@@ -1,6 +1,6 @@
 import { useMemo, useContext } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
-import { Box, Button, IconButton, Paper } from "@mui/material";
+import { Box, Button, IconButton, Paper} from "@mui/material";
 import { Menu } from "@mui/icons-material";
 import { Images, Route } from "core/enums";
 import { AppContext } from "core/context";
@@ -32,7 +32,7 @@ export const Toolbar: React.FC = () => {
           </IconButton>
         )}
         <Link to={"/"}>
-          <img
+        <img
             src={Images.logoRetropaje}
             width={188.15}
             height={62.54}

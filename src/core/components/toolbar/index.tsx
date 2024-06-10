@@ -33,7 +33,7 @@ export const Toolbar: React.FC = () => {
         )}
         <Link to={"/"}>
           <img
-            src={Images.logoSemireys}
+            src={Images.logoRetropaje}
             width={188.15}
             height={62.54}
             className="logo"

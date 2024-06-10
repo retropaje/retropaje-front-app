@@ -70,7 +70,7 @@ export const CatalogPage: React.FC = () => {
       >
         Aquí encontrarás todo lo que necesitas
       </Typography>
-      <Carousel>
+      <Carousel animation="slide" navButtonsAlwaysVisible>
         <img src={PromoBufandas} alt="Promo 50% Bufandas" />
         <img src={PromoEnvios} alt="Promo en envios nacionales" />
         <img src={PromoInternacional} alt="Promo en envios internacionales" />

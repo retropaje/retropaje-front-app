@@ -11,9 +11,9 @@ export const theme = createTheme(
       secondary: { main: "#F3AF06" },
       background: { default: "#FEFAF4" },
       text: { primary: "#0C0801" },
-      // info: { main: "#F3AF06" },
-      // warning: { main: "#ff9800" },
-      // error: { main: "#FC3C68" },
+      info: { main: "#25dac2" },
+      warning: { main: "#f9b406" },
+      error: { main: "#e20337" },
     },
     typography: {
       fontFamily: "Average, serif",

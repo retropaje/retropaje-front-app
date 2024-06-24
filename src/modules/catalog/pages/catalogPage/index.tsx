@@ -6,7 +6,11 @@ import {
   Typography,
   Divider,
   LinearProgress,
+  TextField,
+  InputAdornment,
 } from "@mui/material";
+import SearchIcon from '@mui/icons-material/Search';
+import CloseIcon from '@mui/icons-material/Close';
 import { getAll } from "modules/productManagement/services/products.services";
 import Carousel from "react-material-ui-carousel";
 import { ProductItem } from "modules/catalog/types";
@@ -30,6 +34,16 @@ const toProductItem = (products: Product[]): ProductItem[] => {
 export const CatalogPage: React.FC = () => {
   const [products, setProducts] = useState<ProductItem[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    product.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const handleClearSearch = () => {
+    setSearchTerm('');
+  };
 
   useEffect(() => {
     setIsLoading(true);
@@ -86,8 +100,27 @@ export const CatalogPage: React.FC = () => {
         Nuestros productos
       </Typography>
       <Divider />
+      <TextField
+        fullWidth
+        label="Buscar productos"
+        variant="outlined"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        sx={{ mb: 4 }}
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              {searchTerm ? (
+                <CloseIcon onClick={handleClearSearch} style={{ cursor: 'pointer' }} />
+              ) : (
+                <SearchIcon />
+              )}
+            </InputAdornment>
+          ),
+        }}
+      />
       <Grid container spacing={2} my={4} rowGap={4}>
-        {products.map((product, index) => (
+        {filteredProducts.map((product, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
             <Card sx={{ maxWidth: 370, margin: "0 auto" }}>
               <CardMedia
